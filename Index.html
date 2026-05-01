@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Sua Essência | Curadoria de Identidade Olfativa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        /* Reset e Variáveis de Luxo */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #c5a059;
+            --gold-light: #e0c58e;
+            --dark-bg: #0a0a0a;
+            --glass: rgba(10, 10, 10, 0.85);
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Usando sua foto local hero_bg.jpg */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), 
+                        url('hero_bg.jpg') center/cover no-repeat;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            letter-spacing: 4px;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            font-weight: 200;
+            max-width: 700px;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .hero .cta-hero {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(45deg, var(--gold), #8a6d3b);
+            color: #000;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero .cta-hero:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.5);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* ===== SEÇÃO DE SELEÇÃO ===== */
+        .selection-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #151515 0%, #050505 100%);
+            padding: 120px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .selection-header {
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 800px;
+        }
+
+        .selection-header h2 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .selection-header p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        .perfume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .perfume-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .perfume-card:hover {
+            border-color: var(--gold);
+            background: rgba(197, 160, 89, 0.08);
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            width: 100%;
+            max-width: 140px;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            transition: var(--transition);
+        }
+
+        .perfume-card:hover .card-image {
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: 300;
+        }
+
+        /* ===== SEÇÕES DE PERFUME ===== */
+        .perfume-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .perfume-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.85));
+            z-index: 1;
+        }
+
+        /* Backgrounds de Vibes (Ainda usando Unsplash para manter a atmosfera se você não tiver fotos de fundo) */
+        #noir-night { background-image: url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1920&q=80'); }
+        #pink-silk { background-image: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1920&q=80'); }
+        #blue-ocean { background-image: url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1920&q=80'); }
+        #office-empire { background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80'); }
+        #jazz-wine { background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1920&q=80'); }
+
+        .perfume-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .perfume-content {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+        }
+
+        .essence-tag {
+            display: inline-block;
+            color: var(--gold);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            background: rgba(197, 160, 89, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .perfume-name {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .perfume-vibe {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 25px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .perfume-sensory {
+            font-style: italic;
+            font-weight: 300;
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 1rem;
+            border-left: 2px solid var(--gold);
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        .perfume-notes {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .perfume-notes strong {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .product-image {
+            text-align: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.9));
+            transition: var(--transition);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(45deg, var(--gold), #8a6d3b);
+            color: #000;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            width: 100%;
+            text-align: center;
+            border: none;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(45deg, var(--gold-light), var(--gold));
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #555;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .perfume-container { grid-template-columns: 1fr; }
+            .perfume-content { order: 2; padding: 35px 25px; }
+            .product-image { order: 1; }
+            .selection-header h2 { font-size: 2.2rem; }
+        }
+
+        .reveal { visibility: hidden; }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header class="hero">
+        <h1 class="reveal">A Sua Essência</h1>
+        <p class="subtitle reveal">Você não compra um perfume. Você compra a presença que deseja ter.</p>
+        <button class="cta-hero reveal" onclick="document.getElementById('selection').scrollIntoView()">Descobrir Meu Perfume</button>
+        <div class="scroll-down" onclick="window.scrollBy(0, window.innerHeight)">↓ Explore ↓</div>
+    </header>
+
+    <!-- SELEÇÃO -->
+    <section id="selection" class="selection-section">
+        <div class="selection-header reveal">
+            <h2>Qual é a sua vibe?</h2>
+            <p>Escolha a essência que melhor representa quem você quer ser hoje.</p>
+        </div>
+        <div class="perfume-grid">
+            <!-- Botão Asad -->
+            <div class="perfume-card reveal" onclick="document.getElementById('noir-night').scrollIntoView()">
+                <img src="asad.jpg" alt="Lattafa Asad" class="card-image">
+                <div class="card-title">Noir & Mistério</div>
+                <div class="card-desc">Domínio absoluto. O silêncio do poder.</div>
+            </div>
+            <!-- Botão Yara -->
+            <div class="perfume-card reveal" onclick="document.getElementById('pink-silk').scrollIntoView()">
+                <img src="yara.jpg" alt="Lattafa Yara" class="card-image">
+                <div class="card-title">Seda & Desejo</div>
+                <div class="card-desc">Feminilidade que desarma e seduz.</div>
+            </div>
+            <!-- Botão Turathi -->
+            <div class="perfume-card reveal" onclick="document.getElementById('blue-ocean').scrollIntoView()">
+                <img src="turathi.jpg" alt="Afnan Turathi Blue" class="card-image">
+                <div class="card-title">Azul & Sucesso</div>
+                <div class="card-desc">Frescor da vitória e confiança plena.</div>
+            </div>
+            <!-- Botão Club de Nuit -->
+            <div class="perfume-card reveal" onclick="document.getElementById('office-empire').scrollIntoView()">
+                <img src="club_de_nuit.jpg" alt="Armaf Club de Nuit" class="card-image">
+                <div class="card-title">Poder & Autoridade</div>
+                <div class="card-desc">O topo do jogo. Presença inegável.</div>
+            </div>
+            <!-- Botão Dareej -->
+            <div class="perfume-card reveal" onclick="document.getElementById('jazz-wine').scrollIntoView()">
+                <img src="dareej.jpg" alt="Rasasi Dareej" class="card-image">
+                <div class="card-title">Jazz & Vinho</div>
+                <div class="card-desc">Noite sofisticada e mistério sedutor.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASAD -->
+    <section id="noir-night" class="perfume-section">
+        <div class="perfume-container">
+            <div class="perfume-content reveal">
+                <span class="essence-tag">Domínio Absoluto</span>
+                <h2 class="perfume-name">Lattafa Asad</h2>
+                <h3 class="perfume-vibe">Noir & Mistério</h3>
+                <p class="perfume-sensory">"Pimenta negra que queima na pele. Tabaco que respira. Um rastro que persegue quem passa. Você entra em um lugar e todos sentem sua presença."</p>
+                <div class="perfume-notes">
+                    <strong>NOTAS REAIS:</strong>
+                    Pimenta negra, Cardamomo, Tabaco, Âmbar e Oud.
+                </div>
+                <a href="#" class="cta-btn">Reivindicar Domínio</a>
+            </div>
+            <div class="product-image reveal">
+                <img src="asad.jpg" alt="Lattafa Asad">
+            </div>
+        </div>
+    </section>
+
+    <!-- YARA -->
+    <section id="pink-silk" class="perfume-section">
+        <div class="perfume-container">
+            <div class="product-image reveal">
+                <img src="yara.jpg" alt="Lattafa Yara">
+            </div>
+            <div class="perfume-content reveal">
+                <span class="essence-tag">Feminilidade Pura</span>
+                <h2 class="perfume-name">Lattafa Yara</h2>
+                <h3 class="perfume-vibe">Seda & Desejo</h3>
+                <p class="perfume-sensory">"Pó de rosas. Baunilha que cola na pele. Almíscar suave que fica horas depois que você sai. Doçura que não é açúcar, é sedução."</p>
+                <div class="perfume-notes">
+                    <strong>NOTAS REAIS:</strong>
+                    Rosa, Orquídea, Baunilha, Almíscar e Sândalo.
+                </div>
+                <a href="#" class="cta-btn">Reivindicar Elegância</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TURATHI -->
+    <section id="blue-ocean" class="perfume-section">
+        <div class="perfume-container">
+            <div class="perfume-content reveal">
+                <span class="essence-tag">Sucesso Cristalino</span>
+                <h2 class="perfume-name">Turathi Blue</h2>
+                <h3 class="perfume-vibe">Azul & Sucesso</h3>
+                <p class="perfume-sensory">"Bergamota que explode. Frescor que respira como ar do mar. Depois vem a madeira, sólida e confiante. O perfume de quem já venceu."</p>
+                <div class="perfume-notes">
+                    <strong>NOTAS REAIS:</strong>
+                    Bergamota, Limão, Ambroxano e Madeira de Cedro.
+                </div>
+                <a href="#" class="cta-btn">Reivindicar Vitória</a>
+            </div>
+            <div class="product-image reveal">
+                <img src="turathi.jpg" alt="Afnan Turathi Blue">
+            </div>
+        </div>
+    </section>
+
+    <!-- CLUB DE NUIT -->
+    <section id="office-empire" class="perfume-section">
+        <div class="perfume-container">
+            <div class="product-image reveal">
+                <img src="club_de_nuit.jpg" alt="Armaf Club de Nuit">
+            </div>
+            <div class="perfume-content reveal">
+                <span class="essence-tag">Autoridade Pura</span>
+                <h2 class="perfume-name">Club de Nuit Intense</h2>
+                <h3 class="perfume-vibe">Poder & Autoridade</h3>
+                <p class="perfume-sensory">"Cítrico que explode como um grito silencioso. Depois vem a madeira defumada. Você entra numa sala de reunião e todos viram. Presença que não se discute."</p>
+                <div class="perfume-notes">
+                    <strong>NOTAS REAIS:</strong>
+                    Limão, Bergamota, Íris, Oud e Madeira de Cedro.
+                </div>
+                <a href="#" class="cta-btn">Reivindicar Liderança</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAREEJ -->
+    <section id="jazz-wine" class="perfume-section">
+        <div class="perfume-container">
+            <div class="perfume-content reveal">
+                <span class="essence-tag">Noite Sofisticada</span>
+                <h2 class="perfume-name">Rasasi Dareej</h2>
+                <h3 class="perfume-vibe">Jazz & Vinho</h3>
+                <p class="perfume-sensory">"Vinho tinto que respira. Especiarias que dançam. Madeira escura e profunda como uma nota de saxofone. A noite é sua."</p>
+                <div class="perfume-notes">
+                    <strong>NOTAS REAIS:</strong>
+                    Vinho, Especiarias, Rosa, Oud e Âmbar.
+                </div>
+                <a href="#" class="cta-btn">Reivindicar Mistério</a>
+            </div>
+            <div class="product-image reveal">
+                <img src="dareej.jpg" alt="Rasasi Dareej">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">A Sua Essência</div>
+        <p class="footer-text">Curadoria de Identidade Olfativa. &copy; 2026</p>
+    </footer>
+
+    <script>
+        ScrollReveal().reveal('.reveal', {
+            distance: '40px',
+            duration: 1000,
+            easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            interval: 100,
+            origin: 'bottom',
+            opacity: 0
+        });
+    </script>
+</body>
+          </html>
